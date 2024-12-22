@@ -8,5 +8,3 @@ services:
     container_name: typescript-runner
     volumes:
       - ../src:/usr/src/app   # src ディレクトリをコンテナにマウント
-    ports:
-      - "3000:3000"
