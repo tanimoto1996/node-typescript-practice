@@ -1,6 +1,6 @@
 "use strict";
 // Example TypeScript file
 const greet = (name) => {
-    return `aaa, ${name}!`;
+    return `ううううう, ${name}!`;
 };
 console.log(greet('World'));

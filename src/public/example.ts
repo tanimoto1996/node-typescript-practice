@@ -1,6 +1,6 @@
 // Example TypeScript file
 const greet = (name: string): string => {
-  return `aaa, ${name}!`;
+  return `ううううう, ${name}!`;
 };
 
 console.log(greet('World'));

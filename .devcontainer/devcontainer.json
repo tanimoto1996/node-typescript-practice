@@ -26,6 +26,5 @@
         "mhutchie.git-graph"
       ]
     }
-  },
-  "postCreateCommand": "npm install"
+  }
 }

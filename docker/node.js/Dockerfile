@@ -1,11 +1,13 @@
 # 安定した Node.js イメージを使用
 FROM node:23
 
-# 作業ディレクトリを設定
-WORKDIR /usr/src/app
+# Git をインストール
+RUN apt-get update && apt-get install -y git
 
-# ソースコードをコンテナにコピー
-COPY . /usr/src/app
+# 作業ディレクトリを設定
+WORKDIR /usr/src/app/src
+
+EXPOSE 4001
 
 # デフォルトのコマンドを設定（ts-node を利用）
 CMD ["npm", "run", "dev"]
