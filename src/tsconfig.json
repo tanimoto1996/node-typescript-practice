@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",          // 出力する JavaScript のバージョン
+    "module": "CommonJS",        // モジュールシステム
+    "outDir": "./dist",          // 出力先ディレクトリ
+    "rootDir": ".",              // プロジェクトルートを基準
+    "strict": true,              // 厳格な型チェック
+    "esModuleInterop": true      // ES モジュール互換性
+  },
+  "include": ["**/*"],           // すべてのファイルをコンパイル対象に含める
+  "exclude": ["node_modules", "dist"] // 除外するファイルやディレクトリ
+}

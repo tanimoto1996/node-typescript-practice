@@ -1,0 +1,31 @@
+{
+  "name": "TypeScript DevContainer",
+  "dockerComposeFile": "../docker/compose.yml",
+  "service": "typescript",
+  "workspaceFolder": "/usr/src/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.vscode-typescript-next",
+        "ms-azuretools.vscode-docker",
+        "firsttris.vscode-jest-runner",
+        "visualstudioexptteam.vscodeintellicode",
+        "pflannery.vscode-versionlens",
+        "alefragnani.project-manager",
+        "gruntfuggly.todo-tree",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "MS-CEINTL.vscode-language-pack-ja",
+        "mosapride.zenkaku",
+        "vscode-icons-team.vscode-icons",
+        "donjayamanne.githistory",
+        "mhutchie.git-graph"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install"
+}
