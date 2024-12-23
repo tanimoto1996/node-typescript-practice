@@ -1,18 +1,18 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const path_1 = __importDefault(require("path"));
-const app = (0, express_1.default)();
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+// ESM 環境での __dirname の代替
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const app = express();
 const port = process.env.PORT || 4000;
-// 静的ファイルの配信を最優先で設定
-app.use('/static', express_1.default.static(path_1.default.join(__dirname, 'public')));
+// 静的ファイルの配信を設定
+app.use('/static', express.static(path.join(__dirname, 'public')));
 // 他のルート
 app.get('/', (req, res) => {
-    res.send('iiiii');
+    res.send('これでええか');
 });
+// サーバーを起動
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
