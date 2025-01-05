@@ -10,7 +10,7 @@ const port = process.env.PORT || 4000;
 app.use('/static', express.static(path.join(__dirname, 'public')));
 // 他のルート
 app.get('/', (req, res) => {
-    res.send('これでええか');
+    res.send('池店家');
 });
 // サーバーを起動
 app.listen(port, () => {

@@ -14,7 +14,7 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // 他のルート
 app.get('/', (req, res) => {
-  res.send('これでええか');
+  res.send('池店家');
 });
 
 // サーバーを起動
