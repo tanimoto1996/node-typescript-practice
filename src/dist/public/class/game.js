@@ -1,3 +1,8 @@
+import Screen from "./screen.js";
+import Keyboard from "./keyboard.js";
+import Score from "./score.js";
+import Level from "./level.js";
+import Player from "./player.js";
 /**
  * Game クラス
  */
@@ -12,19 +17,54 @@ export default class Game {
     _scoreBoard; // スコアボード
     _levelBoard; // レベルボード
     // タイマー
-    _mainTimer; // メインタイマー
-    _cometTimer; // 流星タイマー
-    _shotTImer; // 弾タイマー
-    _meteoTimer; // 隕石タイマー
+    _mainTimer;
+    _cometTimer;
+    _shotTimer;
+    _meteoTimer;
     _shotInterval; // 弾の発射間隔
     _meteoInterval; // 隕石の発射間隔
     /**
      * コンストラクタ
      */
     constructor() {
-        // オブジェクトを初期化
+        // 自機を生成
+        this._player = new Player({
+            position: { x: Screen.width / 2, y: 45 },
+            size: { x: 100, y: 90 },
+            speed: 20,
+            keyboad: new Keyboard()
+        });
+        // 配列を初期化
+        this._shots = [];
+        this._comets = [];
+        this._meteos = [];
+        // スコア表示を初期化
+        this._score = 0;
+        this._scoreBoard = new Score({
+            position: { x: 25, y: Screen.height - 25 }, // 例: 下から50ピクセルの位置に
+            fontName: "Bungee Inline",
+            fontSize: 40,
+            score: this._score
+        });
+        // レベル表示を初期化
+        this._level = 1;
+        this._levelBoard = new Level({
+            position: { x: 25, y: Screen.height - 75 }, // 例: スコアより少し上に
+            fontName: "Bungee Inline",
+            fontSize: 24,
+            level: this._level
+        });
         // ゲームの状態を復元
+        this.load();
+        // タイマーの実行間隔
+        this._shotInterval = 1000;
+        this._meteoInterval = 2000;
         // 各種タイマーを起動
+        this._mainTimer = setInterval(this.mainTimer.bind(this), 50);
+        // タイポを修正して _shotTimer に
+        this._shotTimer = setInterval(this.createShot.bind(this), this._shotInterval);
+        this._cometTimer = setInterval(this.createComet.bind(this), 5000);
+        this._meteoTimer = setInterval(this.createMeteo.bind(this), this._meteoInterval);
     }
     /**
      * メインタイマー処理
